@@ -331,11 +331,11 @@ table th{
 
 .list-group-item {
   margin-bottom: -1px;
-  background-color: #171f29;
+  background-color: #171f29 !important;
 }
 
 .list-group-item .active:hover, .list-group-item .active:focus, .list-group-item .active {
-  background-color: #1d2733;
+  background-color: #1d2733 !important;
 }
 
 .list-group-item-heading {

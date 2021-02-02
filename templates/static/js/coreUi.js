@@ -182,7 +182,7 @@ const getJSON = (url, qs_params = "") => {
 const loadData = () => {
     const exchR = document.getElementById("exchangeRate");
     getJSON(
-        "https://cors-anywhere.herokuapp.com/http://www.node-s.co.za/api/v1/duco/exchange_rate"
+        "http://www.node-s.co.za/api/v1/duco/exchange_rate"
       ).then((data) => {
         exchR.innerHTML = `1ᕲ = $${data["value"]}`;
       });
