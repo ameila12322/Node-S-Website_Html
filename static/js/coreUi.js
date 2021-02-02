@@ -188,7 +188,7 @@ const loadData = () => {
       });
     setTimeout(() => {
         loadData();
-    }, 15000);
+    }, 30000);
 };
 const element = document.getElementById("exchangeRate");
 if (typeof(element) != 'undefined' && element != null)
