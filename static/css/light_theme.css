@@ -1,0 +1,251 @@
+.mydiv {
+    position: absolute;
+    z-index: 9;
+    background-color: #171f29;
+    border: 1px solid #1d2733;
+    text-align: center;
+  }
+  
+  #mydivheader {
+    padding: 10px;
+    cursor: move;
+    z-index: 10;
+    background-color: #2196F3;
+    color: #fff;
+  }
+  
+  .h-95 {
+      height: 95%;
+  }
+  
+  .content-section {
+    background: #171f29;
+    padding: 10px 20px;
+    border: 1px solid #1d2733;
+    border-radius: 3px;
+    margin-bottom: 20px;
+  }
+  
+  .article-title {
+    color: #444444;
+  }
+  
+  a.article-title:hover {
+    color: #428bca;
+    text-decoration: none;
+  }
+  
+  .article-content {
+    white-space: pre-line;
+  }
+  
+  .article-img {
+    height: 65px;
+    width: 65px;
+    margin-right: 16px;
+  }
+  
+  .article-metadata {
+    padding-bottom: 1px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid #1d2733;
+  }
+  
+  .article-metadata a:hover {
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .article-svg {
+    width: 25px;
+    height: 25px;
+    vertical-align: middle;
+  }
+  
+  .account-img {
+    height: 125px;
+    width: 125px;
+  }
+  
+  .cart-img {
+    height: 75px;
+    width: 75px;
+    object-fit: contain;
+  }
+  
+  ul.no-bullets {
+    list-style-type: none; /* Remove bullets */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margins */
+  }
+  
+  .account-heading {
+    font-size: 2.5rem;
+  }
+  
+  .item {
+      position:relative;
+      padding-top:20px;
+      display:inline-block;
+  }
+  .notify-label{
+      position: absolute;
+      right:-20px;
+      top:10px;
+      background:red;
+      text-align: center;
+      border-radius: 30px 30px 30px 30px;
+      color:white;
+      padding:5px 10px;
+      font-size:20px;
+  }
+  
+  
+  .card-img-top {
+      width: 100%;
+      height: 300px;
+      object-fit: contain;
+      /*object-fit: scale-down;*/
+      /*object-fit: cover;*/
+  }
+  
+  .card-img-top-400 {
+      width: 400px;
+      height: 400px;
+      object-fit: contain;
+      /*object-fit: cover;*/
+  }
+  
+  .product-info-img{
+    height: 370px;
+    width: 370px;
+    object-fit: contain;
+  }
+  
+  .product-info-sub-img{
+    height: 100px;
+    width: 100px;
+    object-fit: contain;
+  }
+  
+  .product-title, .price, .sizes, .colors {
+    text-transform: UPPERCASE;
+    font-weight: bold;
+  }
+  
+  
+  /* General */
+  
+  .center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+  }
+  
+  body {
+    overflow-x: hidden;
+  }
+  
+  * {
+    color: #ffffff;
+  }
+  
+  .container {
+    margin-top: 80px !important;
+  }
+  
+  .row {
+    margin-top: 15px;
+  }
+  
+  .acc_balance .btn-group 
+  {
+    width: 100%; 
+  }
+  
+  /* TABS */
+  
+  .nav-pills {
+    background: #131722 !important;
+  }
+  
+  .nav-pills .nav-link {
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 0 !important;
+  }
+  
+  .nav-pills .active {
+    background: #1d2733 !important;
+    color: #FFFFFF;
+    font-weight: bold;
+    border-radius: 0 !important;
+    border-bottom: 1px solid #ff6f00;
+  }
+  
+  .tab-content{
+    background: #171f29 !important;
+  }
+  
+  /* scrollbar */
+  
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow   : inset 0 0 5px grey;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background   : #999;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #777;
+  }
+
+  /* DISCORD INVITE */
+  
+  .user-avatar {
+    display: inline-block;
+    position: relative;
+    padding-right: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .avatar {
+    height: 48px;
+    width: 48px;
+    border-radius: 50%;
+  }
+  
+  .status-overlay {
+    background-color: white;
+    position: absolute;
+    bottom: 1vh;
+    right: 1vw;
+    z-index: 1;
+  }
+  
+  .online {
+    background-color: #4BAE4F;
+  }
+  
+  .idle {
+    background-color: rgb(250, 166, 26);
+  }
+  
+  .afk {
+    background-color: rgb(240, 71, 71);
+  }
+  
+  .dot {
+    height: 2vh;
+    width: 1.5vw;
+    border-radius: 50%;
+    display: inline-block;
+    border: 1px solid #242e3e;
+  }
