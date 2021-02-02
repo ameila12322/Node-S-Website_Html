@@ -48,7 +48,10 @@
                             const cartAm = document.getElementById("cartAmount");
                             cartAm.innerHTML = parseInt(cartAm.innerHTML) + 1;
 
-                            $(".alert").fadeOut(15000);
+                            $('.alert').each( function() { // for each Alert fadeout
+                              this.fadeOut(15000);
+                            });
+
                             return false;
                           };
                         </script>
