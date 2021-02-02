@@ -39,12 +39,12 @@
                             <input class="btn btn-sm btn-outline-secondary" id="btn-{{ product.Id }}" type="button" value="Add To Cart">
                         </form>
                         <script>
-                          $("#btn-{{ product.Id }}").click(function() {
+                          document.getElementById("btn-{{ product.Id }}").onclick = () => {
                             var data = new URLSearchParams();
-                            data.append("Item_ID", $("#product-{{ product.Id }}").val());
+                            data.append("Item_ID", document.getElementById("product-{{ product.Id }}").value);
                             fetch("{{ url_for('store.add_to_cart') }}", { method: 'post', body: data });
                             return false;
-                          });
+                          };
                         </script>
                       {% endif %}
                     {% endif %}
