@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}Topics{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+<main role="main" class="container py-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <div class="content-section">
+                <h1>Topics</h1>
+                <p class="text-muted">Use&nbsp;<a href="https://postimages.org/">postimages</a>&nbsp;to post images.</p>
+                {% if category2.open_for_comment %}
+                <a href="{{ url_for('forum.new_topic', category=category) }}">Post new topic</a>
+                {% else %}
+                <p>This category is no longer open for reply.</p>
+                {% endif %}
+                {% if topics or pinned_topics %}
+                <div id="topic-list">
+                    <ul>
+                    {% for topic2 in pinned_topics %}
+                    <li>
+                    <a href="{{ url_for('forum.view_topic', topic_id=topic2.id, category=category) }}">{{ topic2.title }}</a>
+                     - {{ topic2.replies }}
+                    {% if topic2.replies != 1 %} replies {% else %} reply {% endif %}
+                    <a class="text-muted updated-date">{% if topic2.open_for_comment == True %}{% else %} - Closed {% endif %}</a>
+                    <p class="updated-date">{{ topic2.last_reply_date|datetimeelapsedformat }}</p>
+                    </li>
+                    {% endfor %}
+                    <hr>
+                    {% for topic in topics %}
+                    <li>
+                    <a href="{{ url_for('forum.view_topic', topic_id=topic.id, category=category) }}">{{ topic.title }}</a>
+                     - {{ topic.replies }}
+                    {% if topic.replies != 1 %} replies {% else %} reply {% endif %}
+                    <p class="updated-date">{{ topic.last_reply_date|datetimeelapsedformat }}</p>
+                    </li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% else %}
+                    <p>There doesn't seem to be any topics!</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container">
+    <div class=" py-5 row">
+        <div class="col-md-4 order-md-2 mb-4">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">{{ current_user.user_cart|length }}</span>
+            </h4>
+            <ul class="list-group mb-3">
+
+                <li class="list-group-item d-flex justify-content-between">
+                    <span>Total (ZAR)</span>
+                    <strong>R{{ Products.amount }}</strong>
+                </li>
+                <li class="list-group-item">
+                    <div style="padding-right: 15px;" class="nav-item">
+                        <a class="nav-item nav-link btn btn-primary" href="{{ url_for('store.checkout') }}">Checkout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+
+
+
+        <div class="col-md-8 order-md-1">
+            <h4 class="d-flex justify-content-between align-items-center mb-3">
+                <span class="text-muted">Your cart</span>
+                <span class="badge badge-secondary badge-pill">{{ current_user.user_cart|length }}</span>
+            </h4>
+            <ul class="list-group mb-3">
+
+                {% for item in Product_List %}
+                    <li class="list-group-item d-flex justify-content-between lh-condensed">
+                        <div>
+                            <a href="{{ url_for('store.product_info', Id=item.Id) }}">
+                                <img class="cart-img" src="{{ item.Icon }}" alt="">
+                              </a>
+                        </div>
+
+                        <div>
+                            <h6 class="my-0">{{ item.Name }}</h6>
+                            <small class="text-muted">Per Unit: R{{ item.Unit_price }}</small>
+                        </div>
+
+
+                            <div class="row">
+                                <div class="column">
+                                    <span class="text-muted">Qty: {{ item.Qty }}</span>
+                                </div>
+                                <div class="column">
+                                    <form action="{{ url_for('store.cart_edit', type='add') }}" method="post">
+                                        <input type="hidden" value="{{ item.Id }}" name="Item_ID">
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-up"><polyline points="18 15 12 9 6 15"></polyline></svg>
+                                        </button>
+                                    </form>
+                                </div>
+                                <div class="column">
+                                    <form action="{{ url_for('store.cart_edit', type='remove') }}" method="post">
+                                        <input type="hidden" value="{{ item.Id }}" name="Item_ID">
+                                        <button type="submit">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+
+
+
+                        <span class="text-muted">R{{ item.Total }}</span>
+
+                        <form action="{{ url_for('store.remove_all_from_cart') }}" method="post">
+                            <input type="hidden" value="{{ item.Id }}" name="Item_ID">
+                            <button type="submit" class="btn btn-default">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                            </button>
+                        </form>
+                    </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock content %}

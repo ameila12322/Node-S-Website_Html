@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block content %}
+<main role="main">
+  <div class="">
+    <form method="POST" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" action="">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="{{ url_for('main.home') }}">{{ title }}</a>
+      <a class="btn btn-primary w-25" href="{{ url_for('issues.issue_new') }}">New Issue</a>
+        {{ form.hidden_tag() }}
+        {{ form.apps(default="App", class="form-control form-control-dark w-50") }}
+        {{ form.title(class="form-control form-control-dark w-100") }}
+        {{ form.status(class="form-control form-control-dark w-50") }}
+        {{ form.label(class="form-control form-control-dark w-50") }}
+      <!-- <input class="form-control form-control-dark w-100" name='serach' type="text" placeholder="Search" aria-label="Search"> -->
+      <ul class="navbar-nav px-3">
+        <li class="nav-item text-nowrap">
+            {{ form.submit(class="btn btn-primary") }}
+          <!-- <a class="nav-link" href="#">Search</a> -->
+        </li>
+      </ul>
+    </form>
+
+
+  <div class="album py-5 bg-light">
+    <div class="container">
+      <div class="row">
+
+        {% for issue in Issues %}
+        <div class="col-md-4">
+          <div class="card mb-3 box-shadow h-100">
+            <div class="card-header">
+            <h2 style="color:Black;">{{ issue.Title }}</h2>
+            <h3 style="color:{{issue.Label_color}};">{{ issue.Label }}</h3>
+            </div>
+            <div class="card-body">
+              <p class="card-text">{{ issue.Description|safe }}</p>
+            </div>
+              <div class="d-flex justify-content-between align-items-center card-footer">
+                <div class="btn-group">
+                  <a href="{{ url_for('issues.view_topic', issue_id=issue.Id) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                  {% if issue.Edit %}
+                    <a href="{{ url_for('issues.view_topic', issue_id=issue.Id) }}" class="btn btn-sm btn-outline-secondary">Edit</a>
+                  {% endif %}
+                </div>
+                <small style="color:{{issue.Status_color}};">{{ issue.Status }}</small>
+                <small class="text-muted">{{ issue.Date_Posted }}</small>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+{% endblock content %}

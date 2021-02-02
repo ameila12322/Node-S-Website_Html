@@ -1,0 +1,81 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<style>
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+pre blockquote {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+</style>
+<p><b>All Time Hashes: </b>{{ hash_data }}</p>
+<p><b>WMC Balance: </b>{{ wmc_balance_data.balance }} WMC  ({{ To_With }} to withdraw)</p>
+<p><b>BTC Balance: </b>₿ {{ btc_balance_data }}  -  R{{ btc_in_zar }}</p>
+<p><b>R1 = </b>{{ zar_wmc_points }} Points</p>
+<p><b>R1 = </b>{{ zar_wmc }} WMC</p>
+<hr>
+<h4>Duco</h4>
+<p>Duco Value: 1 Duco = {{ duco_price }}</p>
+<p>NodeSBroker Balance: {{ NodeSBroker }}</p>
+<p>NodeS Balance: {{ NodeS }}</p>
+
+<hr>
+<a class="nav-item nav-link btn btn-info" href="https://www.mylivechat.com/webconsole/?MyLiveChatID=57389526&AgentName={{ current_user.name }}&password=142003">Live Chat Dashboard</a>
+
+<a class="nav-item nav-link btn btn-info" href="https://feathericons.com/">Feather Icons</a>
+
+<a class="nav-item nav-link btn btn-success" href="https://portal.yoco.co.za/dashboard">Yoco</a>
+
+<a class="nav-item nav-link btn btn-warning" href="https://www.registerdomain.co.za/index.php?m=DNSManager2&mg-action=editZone&zone_id=20116">Register Domain SA<br>Node-s</a>
+
+<a class="nav-item nav-link btn btn-info" href="https://www.dynu.com/en-US/ControlPanel/BasicEdit?ATVPDKIKX0DER=SQBEAD0AOQAxADQAMwAyADcANAA%7C">Dynu<br>Node-Server.camdvr.org</a>
+
+<a class="nav-item nav-link btn btn-warning" href="https://dashboard.heroku.com/pipelines/0d7b088b-7bc4-4811-a04e-767b78505cc7">Heroku</a>
+
+<a class="nav-item nav-link btn btn-primary" href="https://node-server.camdvr.org:8006/">Proxmox</a>
+
+
+<a class="nav-item nav-link btn btn-primary" href="https://cpanel.node-s.co.za/">CPanel</a>
+
+<a class="nav-item nav-link btn btn-primary" href="https://webmail.node-s.co.za/">Webmail</a>
+
+<a class="nav-item nav-link btn btn-warning" href="https://serv28.registerdomain.co.za:2083/cpsess5728372756/frontend/paper_lantern/zone_editor/index.html#/manage?domain=node-s.co.za">CPanel DNS</a>
+
+
+<br>
+<hr>
+<br>
+
+<a class="nav-item nav-link btn btn-info" href="https://search.google.com/search-console/performance/search-analytics?resource_id=http%3A%2F%2Fwww.node-s.co.za%2F&hl=en">Google Search Console</a>
+
+<a class="nav-item nav-link btn btn-success" href="https://www.google.com/adsense/new/u/0/pub-6969432315213887/sites/my-sites">Google Ad Sense</a>
+
+<a class="nav-item nav-link btn btn-info" href="https://analytics.google.com/analytics/web/#/p253916493/reports/defaulthome?params=_u..nav%3Ddefault">Google Analytics</a>
+
+<a class="nav-item nav-link btn btn-info" href="https://ads.google.com/aw/express/dashboard?campaignId=11937127172&ocid=339978232&euid=342261102&__u=2539785598&uscid=339978232&__c=9386278968&authuser=0&subid=za-en-et-g-aw-c-home-awhp_xin1_signin%21o2">Google ad words</a>
+
+
+<br>
+<hr>
+<br>
+
+
+<a class="nav-item nav-link btn btn-info" href="https://github.com/paypal/PayPal-Python-SDK">Paypal Python SDK</a>
+
+
+<br>
+<hr>
+<br>
+
+
+<a class="nav-item nav-link btn btn-primary" href="http://www.node-s.co.za/pages/Email_Template">Paypal Email Template</a>
+
+
+
+{% endblock %}

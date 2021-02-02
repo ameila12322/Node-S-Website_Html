@@ -1,0 +1,61 @@
+{% extends "store_base.html" %}
+
+{% block content %}
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
+  <div class="album py-5 bg-light">
+    <div class="row">
+      <div class="container">
+      </div>
+    </div>
+    <div class="container">
+      <hr>
+      <h1 style="text-align: center;">Our Products</h1>
+      <hr>
+      <div class="row">
+
+        {% for category in categories %}
+        {% if category.other_company == False %}
+          <div class="col-md-4">
+            <a href="{{ url_for('store.products', category=category.name) }}">
+            <div class="card mb-4 box-shadow">
+
+                  <img class="card-img-top " src="{{ category.icon }}" alt="">
+
+              <div class="card-body">
+                <h2 class="card-text">{{ category.name }}</h2>
+                <p>{{ category.description|safe }}</p>
+              </div>
+            </div>
+            </a>
+          </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+
+      <hr>
+      <h1 style="text-align: center;">Other Stores</h1>
+      <hr>
+
+      <div class="row">
+        {% for category in categories %}
+        {% if category.other_company == True %}
+          <div class="col-md-4">
+            <a href="{{ url_for('store.products', category=category.name) }}">
+            <div class="card mb-4 box-shadow">
+
+                  <img class="card-img-top " src="{{ category.icon }}" alt="">
+
+              <div class="card-body">
+                <h2 class="card-text">{{ category.name }}</h2>
+                <p>{{ category.description|safe }}</p>
+              </div>
+            </div>
+            </a>
+          </div>
+        {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

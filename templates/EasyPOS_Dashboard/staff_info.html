@@ -1,0 +1,46 @@
+{% extends "user_dashboard.html" %}
+{% block inner %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <h2>Staff
+    <a href="{{ url_for('easypos.easypos_dashboard_view_item', sale_id=1) }}"><span data-feather="edit"></span></a>
+    <a href="{{ url_for('easypos.easypos_dashboard_staff_remove', ID=staff_data.id) }}"><span data-feather="delete"></span></a>
+    </h2>
+
+    <div class="table-responsive">
+        <table class="table table-striped table-sm">
+          <thead>
+            <tr>
+              <th>Label</th>
+              <th>Data</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Id</td>
+              <td>{{ staff_data.id }}</td>
+            </tr>
+            <tr>
+              <td>Name</td>
+              <td>{{ staff_data.name }}</td>
+            </tr>
+            <tr>
+              <td>Password</td>
+              <td>{{ staff_data.password }}</td>
+            </tr>
+            <tr>
+              <td>Permission</td>
+              <td>{{ staff_data.permission }}</td>
+            </tr>
+            <tr>
+              <td>Key</td>
+              <td>{{ staff_data.key }}</td>
+            </tr>
+            <tr>
+              <td>Sales Last 7 Days</td>
+              <td>Coming soon</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</main>
+{% endblock inner %}

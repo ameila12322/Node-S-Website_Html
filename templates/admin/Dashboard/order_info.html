@@ -1,0 +1,145 @@
+{% extends "admin/Dashboard/dashboard_base.html" %}
+{% block inner %}
+<main role="main" class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-8">
+      <div class="content-section">
+        <h1 style="text-align: center;">Order Details for Order: {{ order.id }}</h1>
+        <br>
+        <style>
+            table {
+              width:100%;
+            }
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 15px;
+              text-align: left;
+            }
+            #t01 tr:nth-child(even) {
+              background-color: #eee;
+            }
+            #t01 tr:nth-child(odd) {
+             background-color: #fff;
+            }
+            #t01 th {
+              background-color: black;
+              color: white;
+            }
+            .tab { margin-left: 40px; }
+          </style>
+          <div class="table-responsive">
+              <font size="5" face="Courier New" >
+                  <table  id="t01" class="">
+                    <thead>
+                      <tr>
+                        <th style="width:15%;">Label</th>
+                        <th style="width:85%">Data</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td><b>Order ID</b></td>
+                        <td>{{ order.id }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Name</b></td>
+                        <td>{{ order.user_data.name }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Surname</b></td>
+                        <td>{{ order.user_data.surname }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Email</b></td>
+                        <td><a href="mailto:{{ order.user_data.email }}">{{ order.user_data.email }}</a></td>
+                      </tr>
+                      <tr>
+                        <td><b>Address 1</b></td>
+                        <td>{{ order.address1 }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Address 2</b></td>
+                        <td>{{ order.address2 }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>City</b></td>
+                        <td>{{ order.city }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Province</b></td>
+                        <td>{{ order.province }}</td>
+                      <tr>
+                        <td><b>Country</b></td>
+                        <td>{{ order.country }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Postal Code</b></td>
+                        <td>{{ order.postal_code }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Phone Number</b></td>
+                        <td>{{ order.phone_number }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Order Message</b></td>
+                        <td>{{ order.order_message }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Order Date</b></td>
+                        <td>{{ order.order_date }} - {{ order.order_date|datetimeelapsedformat }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Transaction ID</b></td>
+                        <td>{{ order.transaction_table.charge_id }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Order Status</b></td>
+                        <td>{{ order.OrderStatus_data.name }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Total</b></td>
+                        <td>R{{ order.transaction_table.amount }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Commission</b></td>
+                        <td>R{{ order.transaction_table.commision }}</td>
+                      </tr>
+                      <tr>
+                        <td><b>Grand Total</b></td>
+                        <td>R{{ order.transaction_table.amount - order.transaction_table.commision }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+              </font>
+          </div>
+      </div>
+      <h2>Items</h2>
+      <div class="table-responsive">
+          <table class="table table-striped table-sm">
+              <thead>
+                  <tr>
+                      <th>Qty</th>
+                      <th>Item</th>
+                      <th>Total Price</th>
+                  </tr>
+            </thead>
+            <tbody>
+              {% for item in items %}
+                  <tr>
+                    <td>{{ item.Qty }}</td>
+                    <td>{{ item.Item }}</td>
+                    <td>R{{ item.Amount }}</td>
+                  </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock inner %}
+
+

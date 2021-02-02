@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}{{ subject }}{% endblock %}
+{% block content %}
+
+
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" type="text/css">
+<main role="main" class="container py-5">
+    <div class="row justify-content-md-center">
+        <div class="col-md-12">
+            <div class="content-section">
+                <div class="card card-header">
+                <h1>{{ subject.title }}</h1>
+                </div>
+                <!-- <hr class="mb-4"> -->
+                <div class="card card-body">
+                <p class="">{{ subject.content|safe }}</p>
+                </div>
+                <div class="card card-footer">
+                {% if message %}{{ message|safe }}{% endif %}
+                </div>
+                <hr class="mb-4">
+                <div id="replies">
+                <ul>
+                    {% for reply in replies %}
+                    {% if reply.hidden %}
+                    {% else %}
+                    <li><b>{{ reply.author.username }}</b> posted:
+                        <p class="updated-date">{{ reply.date_posted|datetimeelapsedformat }}</p>
+                    <br /><pre>{{ reply.content|safe }}</pre></li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>
+                </div>
+
+                <div class="card card-header">
+                <h1>Post a reply</h1>
+                </div>
+                {% if current_user.is_authenticated %}
+                <div class="card card-body">
+                {% if subject %}
+                <form name="input" action="{{ url_for('issues.view_topic', issue_id=issue_id) }}" method="post">
+                {% from "issue/_formhelpers.html" import render_form %} {{ render_form(form) }}
+                <div class="card card-footer">
+                <input type="submit" value="Post Reply" />
+                </div>
+                </form>
+                {% else %}
+                <p>This Topic is no longer open for reply.</p>
+                {% endif %}
+                </div>
+                {% else %}
+                <div class="card card-body">
+                <p>You need to <a href="{{ url_for('users.login')}}">login</a> to post a reply.</p>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</main>
+
+
+{% endblock %}

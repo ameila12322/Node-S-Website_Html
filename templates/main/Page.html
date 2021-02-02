@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+pre code {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+pre blockquote {
+  background-color: #eee;
+  border: 1px solid #999;
+  display: block;
+  padding: 20px;
+}
+</style>
+<main role="main">
+    {% if hidden == False %}
+    <div class="container">
+        {{ Content|safe }}
+    </div>
+    {% else %}
+    {{ Content|safe }}
+    {% endif %}
+
+</main>
+{% endblock %}
+

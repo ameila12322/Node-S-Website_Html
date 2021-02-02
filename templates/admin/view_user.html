@@ -1,0 +1,126 @@
+{% extends 'admin/master.html' %}
+{% block body %}
+<style>
+table {
+  width:100%;
+}
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th, td {
+  padding: 15px;
+  text-align: left;
+}
+#t01 tr:nth-child(even) {
+  background-color: #eee;
+}
+#t01 tr:nth-child(odd) {
+ background-color: #fff;
+}
+#t01 th {
+  background-color: black;
+  color: white;
+}
+.tab { margin-left: 40px; }
+</style>
+{% if Data %}
+    <div class="table-responsive">
+        <font size="5" face="Courier New" >
+            <table  id="t01" class="">
+              <thead>
+                <tr>
+                  <th style="width:15%;">Label</th>
+                  <th style="width:85%">Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>Id</b></td>
+                  <td>{{ Data.id }}</td>
+                </tr>
+                <tr>
+                  <td><b>Username</b></td>
+                  <td>{{ Data.username }}</td>
+                </tr>
+                <tr>
+                  <td><b>Name</b></td>
+                  <td>{{ Data.name }}</td>
+                </tr>
+                <tr>
+                  <td><b>Surname</b></td>
+                  <td>{{ Data.surname }}</td>
+                </tr>
+                <tr>
+                  <td><b>Email</b></td>
+                  <td>{{ Data.email }}</td>
+                </tr>
+                <tr>
+                  <td><b>Active</b></td>
+                  <td>{{ Data.active }}</td>
+                </tr>
+                <tr>
+                  <td><b>Forums</b></td>
+                  <td><strong>Topics:</strong> {{ Data.user_topics|length }} | <strong>Replys:</strong> {{ Data.user_replys|length }}</td>
+                </tr>
+                <tr>
+                  <td><b>Issues</b></td>
+                  <td><strong>Issues:</strong> {{ Data.issues|length }} | <strong>Comments:</strong> {{ Data.issue_comments|length }}</td>
+                </tr>
+                <tr>
+                  <td><b>Roles</b></td>
+                  <td>
+                    {% for Role in Data.role %}
+                    {{ Role.roles.name }},
+                    {% endfor %}
+                  </td>
+                </tr>
+                {% if Data.warns %}
+                <tr>
+                  <td><b>Warns | {{ Data.warns|length }}</b></td>
+                  <td>
+                    {% for warn in Data.warns %}
+                        Warned By: {{ warn.warner.name }} | Reason: {{ warn.reason }}<br>
+                    {% endfor %}
+                  </td>
+                </tr>
+                {% endif %}
+                {% if Data.company %}
+                <tr>
+                  <td><b>Company</b></td>
+                  <td>{{ Data.company.company_name }}</td>
+                </tr>
+                {% endif %}
+                <tr>
+                  <td><b>Purchases</b></td>
+                  <td>
+                    {% for purchase in Data.purchases %}
+                        <strong>Date:</strong> {{ purchase.transaction_date }}<br>
+                        <strong>Charge Id:</strong> {{ purchase.charge_id }}
+                        <p class="tab">
+                        {% for product in purchase.purchase_data %}
+                            {{ product.product_key_info.product }} - {{ product.product_key_info.product.item_category }} - R{{ product.product_key_info.product.price }}<br>
+                        {% endfor %}</p>
+                        <p>---------------------------------------</p>
+                    {% endfor %}
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Cart</b></td>
+                  <td>
+                    {% for cart in Data.user_cart %}
+                        {{ cart.product }} - {{ cart.product.item_category }} - R{{ cart.product.price }}<br>
+                    {% endfor %}
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+        </font>
+    </div>
+{% else %}
+    <form action="{{ url_for('view_user.view_user') }}" method="GET">
+        <input type="integer" name="user_id">
+        <button name="submit" type="submit" class="btn btn-secondary">Get Data</button>
+    </form>
+{% endif %}
+{% endblock %}

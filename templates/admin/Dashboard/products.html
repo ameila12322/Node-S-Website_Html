@@ -1,0 +1,55 @@
+{% extends "admin/Dashboard/dashboard_base.html" %}
+{% block inner %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <h2>Products <a href="{{ url_for('dashboard.dashboard_product_add', Id=0) }}"><span data-feather="plus-square"></span></a></h2>
+  <form method="POST" class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0" action="">
+    {{ form.hidden_tag() }}
+    {{ form.name(class="form-control form-control-dark w-50") }}
+    {{ form.submit(class="btn btn-primary") }}
+  </form>
+  <div class="table-responsive">
+    <h6></h6>
+      <table class="table table-striped table-sm">
+          <thead>
+              <tr>
+                  <th>Item Name</th>
+                  <th>Price</th>
+                  <th>Stock</th>
+                  <th>Sold_Out</th>
+                  <th>Delivery</th>
+                  <th>Active</th>
+                  <th>Badge</th>
+                  <th>Catogory</th>
+                  <th>Actions</th>
+              </tr>
+        </thead>
+        <tbody>
+          {% for product in products %}
+              <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.stock }}</td>
+                <td>{{ product.out_of_stock }}</td>
+                <td>{{ product.delivery }}</td>
+                <td>{{ product.active }}</td>
+                {% if product.badge != None %}
+                  <td>{{ product.badge.text }}</td>
+                {% else %}
+                  <td></td>
+                {% endif %}
+                <td>{{ product.item_category.name }}</td>
+                <td>
+                    <!-- <a href="{{ url_for('easypos.easypos_dashboard_staff_info', ID=1) }}"><span data-feather="info"></span></a> -->
+                    <a href="{{ url_for('dashboard.dashboard_product_add', Id=product.id) }}"><span data-feather="edit"></span></a>
+                    <a href="{{ url_for('dashboard.dashboard_product_remove', ID=product.id) }}"><span data-feather="delete"></span></a>
+                  </td>
+              </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% if products|length == 0 %}
+      <p>Sorry we cant find what you are looking for! Please enter a different search and try again.</p>
+      {% endif %}
+  </div>
+</main>
+{% endblock inner %}

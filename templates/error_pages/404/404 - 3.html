@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+
+  <meta charset="UTF-8">
+
+<link rel="apple-touch-icon" type="image/png" href="https://static.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+<meta name="apple-mobile-web-app-title" content="CodePen">
+
+<link rel="shortcut icon" type="image/x-icon" href="https://static.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+<link rel="mask-icon" type="" href="https://static.codepen.io/assets/favicon/logo-pin-8f3771b1072e3c38bd662872f6b673a722f4b3ca2421637d5596661b4e2132cc.svg" color="#111" />
+
+
+  <title>CodePen - #8 404 page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<base href="//s3-us-west-2.amazonaws.com/s.cdpn.io/157670/">
+
+
+
+<style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      height: 100%;
+      background: url("https://wallpapercave.com/wp/6SLzBEY.jpg") no-repeat left top;
+      background-size: cover;
+      overflow: hidden;
+      display: flex;
+      flex-flow: column wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .text h1 {
+      color: #011718;
+      margin-top: -200px;
+      font-size: 15em;
+      text-align: center;
+      text-shadow: -5px 5px 0px rgba(0, 0, 0, 0.7), -10px 10px 0px rgba(0, 0, 0, 0.4), -15px 15px 0px rgba(0, 0, 0, 0.2);
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    .text h2 {
+      color: black;
+      font-size: 5em;
+      text-shadow: -5px 5px 0px rgba(0, 0, 0, 0.7);
+      text-align: center;
+      margin-top: -150px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    .text h3 {
+      color: white;
+      margin-left: 30px;
+      font-size: 2em;
+      text-shadow: -5px 5px 0px rgba(0, 0, 0, 0.7);
+      margin-top: -40px;
+      font-family: monospace;
+      font-weight: bold;
+    }
+
+    .torch {
+      margin: -150px 0 0 -150px;
+      width: 200px;
+      height: 200px;
+      box-shadow: 0 0 0 9999em #000000f7;
+      opacity: 1;
+      border-radius: 50%;
+      position: fixed;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .torch:after {
+      content: '';
+      display: block;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      top: 0px;
+      left: 0px;
+      box-shadow: inset 0 0 40px 2px #000, 0 0 20px 4px rgba(13, 13, 10, 0.2);
+    }
+</style>
+
+<script>
+    window.console = window.console || function(t) {};
+</script>
+
+
+
+<script>
+    if (document.location.search.match(/type=embed/gi)) {
+        window.parent.postMessage("resize", "*");
+    }
+</script>
+
+
+</head>
+
+<body translate="no" >
+  <div class="text">
+  <h1>404</h1>
+    <h2>Uh, Ohh</h2>
+  <h3>Sorry we cant find what you are looking for 'cuz its so dark in here</h3>
+</div>
+<div class="torch"></div>
+    <script src="https://static.codepen.io/assets/common/stopExecutionOnTimeout-157cd5b220a5c80d4ff8e0e70ac069bffd87a61252088146915e8726e5d9f147.js"></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
+
+      <script id="rendered-js" >
+$(document).mousemove(function (event) {
+  $('.torch').css({
+    'top': event.pageY,
+    'left': event.pageX });
+
+});
+//# sourceURL=pen.js
+    </script>
+
+
+
+</body>
+
+</html>

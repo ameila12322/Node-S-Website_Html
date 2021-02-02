@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<main role="main" class="container">
+
+  <!--Create an app and replace "YOUR_CLIENT_ID" with your client ID-->
+    <script src="https://www.paypal.com/sdk/js?client-id=AUHTkEt3Mr635nbHRhIQ-xrVNL2GzSSzypJMVJ3-d4W5VEvhQhK9zfO2p0lZm28uyMTYlYnuJvx-awiU&currency=USD&intent=order&commit=false&vault=true"></script>
+    <!-- <script src="https://www.paypal.com/sdk/js?client-id=AW4Or5XUZvw66qs1a7sOrhTtqhr-KR-ZwopKjU2SLpz-l8z-syB53nH8jKJ9Z1pE6V29ct_7yvDxyMw4&currency=USD&intent=order&commit=false&vault=true"></script> -->
+</head>
+
+    <body>
+      <!-- Set up a container element for the button -->
+      <div id="paypal-button-container"></div>
+
+        <script>
+            paypal.Buttons({
+                createOrder: function() {
+                    // SetExpressCheckout URL
+                    var SETEC_URL = "{{ url_for('duco_exchange.duco_exchange_generate_buy', duco=input_amount) }}";
+                    return fetch(SETEC_URL).then(function(res) {
+                        return res.json();
+                    }).then(function(data) {
+                        return data.token;
+                    });
+                },
+                onApprove: function(data) {
+                    // GetExpresCheckout/DoExpressCheckoutPayment URL
+
+                    var EXECUTE_URL = "{{ url_for('duco_exchange.duco_exchange_init_buy') }}";
+                    return fetch(EXECUTE_URL, {
+                        method: 'post',
+                        body: JSON.stringify({
+                            paymentID: data.paymentID,
+                            payerID:   data.payerID
+                        })
+                    }).then(function(res) {
+                        print(res.success)
+                    });
+                },
+                onCancel: function(data, actions) {
+                    console.log('user cancelled-', data);
+                },
+                onError: function(data, actions) {
+                    console.log('error occured-s', data);
+                }
+            }).render('#paypal-button-container');
+        </script>
+
+</main>
+{% endblock content %}

@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<div style="background-color: #FEFEFE;" class="container">
+    <div class=" py-5 row">
+        <div  class="col-md-4 order-md-1 mb-4">
+            <span style="position: absolute; right:-10px; top:0px; background:{{ Data.badge.color }}; text-align: center; border-radius: 30px 30px 30px 30px; color:white; padding:5px 10px; font-size:20px;" class="badge">{{ Data.badge.text }}</span>
+            <img class="product-info-img" src="{{Icon_Image}}" alt="">
+        </div>
+
+        <div class="col-md-8 order-md-2">
+            <h3 class="product-title">{{ Data.name }}</h3>
+
+            <p class="product-description">{{ Data.description|safe }}</p>
+            <h4 class="price">current price: <span style="color: #ff9f1a;">R{{ Data.price }}</span></h4>
+            {% if Data.price <= 0 %}
+              <a href="{{ Data.download_link }}" class="btn btn-sm btn-outline-secondary">Download</a>
+            {% else %}
+              {% if Data.out_of_stock == True or Data.stock == 0 %}
+              {% else %}
+                <div class="action btn-group">
+                    <form action="{{ url_for('store.add_to_cart') }}" method="POST" >
+                        <input type="hidden" value="{{ Data.id }}" name="Item_ID">
+                        <input type="hidden" value="{{ url_for('store.product_info', Id=Data.id) }}" name="Redirect">
+                        <button class="btn btn-secondary" type="submit">Add To Cart</button>
+                    </form>
+                    <form action="{{ url_for('store.add_to_cart') }}" method="POST" >
+                        <input type="hidden" value="{{ Data.id }}" name="Item_ID">
+                        <input type="hidden" value="{{ url_for('store.checkout') }}" name="Redirect">
+                        <button class="btn btn-secondary" type="submit">Buy Now</button>
+                    </form>
+                    <!-- <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button> -->
+                </div>
+              {% endif %}
+            {% endif %}
+        </div>
+    </div>
+
+
+
+    <div class="w3-container">
+
+      <div class="w3-bar w3-light-grey">
+        <button class="w3-bar-item w3-button tablink w3-grey" onclick="openTab(event,'Details')">Details</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Specifications')">Specifications</button>
+        <button class="w3-bar-item w3-button tablink" onclick="openTab(event,'Reviews')">Reviews</button>
+      </div>
+
+      <div id="Details" class="w3-container w3-border tab">
+        <h2>Details</h2>
+        <p>{{ Data.features|safe }}</p>
+      </div>
+
+      <div id="Specifications" class="w3-container w3-border tab" style="display:none">
+        <h2>Specifications</h2>
+        <p>{{ Data.specifications|safe }}</p>
+      </div>
+
+      <div id="Reviews" class="w3-container w3-border tab" style="display:none">
+        <h2>Reviews</h2>
+        <p>Coming Soon!</p>
+      </div>
+    </div>
+</div>
+<script>
+function openTab(evt, cityName) {
+  var i, x, tablinks;
+  x = document.getElementsByClassName("tab");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < x.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" w3-grey", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  evt.currentTarget.className += " w3-grey";
+}
+</script>
+
+{% endblock content %}

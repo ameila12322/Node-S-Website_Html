@@ -1,0 +1,26 @@
+{% extends "admin/Dashboard/dashboard_base.html" %}
+{% block inner %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <a href="{{ url_for('dashboard.help_page', _anchor='Introduction') }}">Introduction</a><br>
+    <hr>
+    <a href="{{ url_for('dashboard.help_page', _anchor='Orders') }}">Orders</a><br>
+    <a href="{{ url_for('dashboard.help_page', _anchor='How_To_Edit_Order_Status') }}"> - How To Edit Order Status</a><br>
+    <hr>
+    <hr>
+
+  <h1 id="Introduction">Introduction</h1>
+  <p>This Page is all about helping you when you get stuck.
+  The data on this page will be updated every so often so make sure to stay up to date.
+  If you have any questions don't hesitate to contact me at <a href="mailto:connor@node-s.co.za">connor@node-s.co.za</a></p>
+  <hr>
+
+  <h1 id="Orders">Orders</h1>
+  <p>The `Orders` section of the admin page is for you to see new orders and the items that have been ordered, as well as
+  update the order status for you and the client</p>
+  <hr>
+
+  <h2 id="How_To_Edit_Order_Status">How To Edit Order Status</h2>
+  <hr>
+
+</main>
+{% endblock inner %}

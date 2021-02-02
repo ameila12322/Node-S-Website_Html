@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+    <main role="main" class="container">
+        <div class="row justify-content-md-center">
+            <div class="col-md-8">
+                <div class="content-section">
+                    <script src="https://webminepool.com/lib/simple-ui.js"></script>
+                    <div id="wmp-container"
+                        wmp-site-key="SK_rlQbLER3VpD6ypgSmOPfx"
+                        wmp-username="{{ current_user.username }}"
+                        wmp-threads="2"
+                        wmp-throttle="0.0"
+                        wmp-autostart="true"
+                        style="margin: 0 auto;"
+                    >
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock content %}

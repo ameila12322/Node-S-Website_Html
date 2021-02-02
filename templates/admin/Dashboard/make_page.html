@@ -1,0 +1,92 @@
+{% extends "admin/Dashboard/dashboard_base.html" %}
+{% block inner %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <main role="main" class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <div class="content-section">
+                <form method="POST" action="">
+                    {{ form.hidden_tag() }}
+                    <fieldset class="form-group">
+                        <legend class="border-bottom mb-4">Add Product</legend>
+                        <div class="form-group">
+                            {{ form.endpoint.label(class="form-control-label") }}
+                            {% if form.endpoint.errors %}
+                                {{ form.endpoint(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.endpoint.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.endpoint(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.title.label(class="form-control-label") }}
+                            {% if form.title.errors %}
+                                {{ form.title(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.title.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.title(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.content.label(class="form-control-label") }}
+                            {% if form.content.errors %}
+                                {{ form.content(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.content.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.content(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.full_page.label(class="form-control-label") }}
+                            {% if form.full_page.errors %}
+                                {{ form.full_page(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.full_page.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.full_page(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                        <div class="form-group">
+                            {{ form.hidden.label(class="form-control-label") }}
+                            {% if form.hidden.errors %}
+                                {{ form.hidden(class="form-control form-control-lg is-invalid") }}
+                                <div class="invalid-feedback">
+                                    {% for error in form.hidden.errors %}
+                                        <span>{{ error }}</span>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                {{ form.hidden(class="form-control form-control-lg") }}
+                            {% endif %}
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                            {{ form.submit(class="btn btn-outline-info") }}
+                    </div>
+                </form>
+                <div class="border-top pt-3">
+                </div>
+            </div>
+        </div>
+    </div>
+  </main>
+</main>
+{{ ckeditor.load() }}
+<script src="{{ url_for('static', filename='ckeditor/ckeditor.js') }}"></script>
+{{ ckeditor.config(name='text') }}
+{% endblock inner %}

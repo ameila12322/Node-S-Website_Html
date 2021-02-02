@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% block content %}
+<main role="main" class="container">
+    <div class="row justify-content-md-center">
+        <div class="col-md-8">
+            <div class="content-section">
+    <h1 style="text-align: center;">Account Details for user: {{ current_user.username }}</h1>
+    <br>
+    <style>
+        table {
+          width:100%;
+        }
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        th, td {
+          padding: 15px;
+          text-align: left;
+        }
+        #t01 tr:nth-child(even) {
+          background-color: #eee;
+        }
+        #t01 tr:nth-child(odd) {
+         background-color: #fff;
+        }
+        #t01 th {
+          background-color: black;
+          color: white;
+        }
+        .tab { margin-left: 40px; }
+    </style>
+    <div class="table-responsive">
+        <font size="5" face="Courier New" >
+            <table  id="t01" class="">
+              <thead>
+                <tr>
+                  <th style="width:15%;">Label</th>
+                  <th style="width:85%">Data</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>User ID</b></td>
+                  <td>{{ current_user.id }}</td>
+                </tr>
+                <tr>
+                  <td><b>Username</b></td>
+                  <td>{{ current_user.username }}</td>
+                </tr>
+                <tr>
+                  <td><b>Name</b></td>
+                  <td>{{ current_user.name }}</td>
+                </tr>
+                <tr>
+                  <td><b>Surname</b></td>
+                  <td>{{ current_user.surname }}</td>
+                </tr>
+                <tr>
+                  <td><b>Email</b></td>
+                  <td>{{ current_user.email }}</td>
+                </tr>
+                <tr>
+                  <td><b>Password</b></td>
+                  <td><a class="ml-2" href="{{ url_for('reset_request') }}">Change Password</a></td>
+                </tr>
+                {% if hashes.success != False %}
+                    <tr>
+                        <td><b>Points</b></td>
+                        <td>{{ hashes.hashes }}<br>Get points by spending time on the site.<br> uses: coming soon</td>
+                    </tr>
+                {% endif %}
+                {% if current_user.company != None %}
+                <tr>
+                  <td><b>Company Name</b></td>
+                  <td>{{ current_user.company.company_name }}<a class="nav-item nav-link btn btn-primary" href="{{ url_for('easypos.easypos_dashboard_dashboard') }}">Company Dashboard</a></td>
+                </tr>
+                {% endif %}
+              </tbody>
+            </table>
+        </font>
+    </div>
+
+    <h2>Orders In Progress</h2>
+      <div class="table-responsive">
+          <table class="table table-striped table-sm">
+              <thead>
+                  <tr>
+                      <th>Order Id</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                  </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+                {% if order.OrderStatus_data.name != 'Done' %}
+                  <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.order_date }} - {{ order.order_date|datetimeelapsedformat }}</td>
+                    <td>{{ order.OrderStatus_data }}</td>
+                    <td>
+                      <a href="mailto:support@node-s.co.za?body=<b>Order ID: {{ order.id }}</b>" rel="tooltip" title="Open Dispute"><span data-feather="mail"></span></a>
+                      <a href="{{ url_for('api_V1.order_status', id=order.id) }}" rel="tooltip" title="View Order Info"><span data-feather="info"></span></a>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+
+    <h2>Completed Orders</h2>
+      <div class="table-responsive">
+          <table class="table table-striped table-sm">
+              <thead>
+                  <tr>
+                      <th>Order Id</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                  </tr>
+            </thead>
+            <tbody>
+              {% for order in orders %}
+                {% if order.OrderStatus_data.name == 'Done' %}
+                  <tr>
+                    <td><font color="green">{{ order.id }}</font></td>
+                    <td><font color="green">{{ order.order_date }} - {{ order.order_date|datetimeelapsedformat }}</font></td>
+                    <td><font color="green">{{ order.OrderStatus_data }}</font></td>
+                    <td>
+                      <a href="mailto:support@node-s.co.za?body=<b>Order ID: {{ order.id }}</b>" rel="tooltip" title="Open Dispute"><span data-feather="mail"></span></a>
+                      <a href="{{ url_for('api_V1.order_status', id=order.id) }}" rel="tooltip" title="View Order Info"><span data-feather="info"></span></a>
+                    </td>
+                  </tr>
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+      </div>
+</div>
+</div>
+</div>
+</main>
+{% endblock content %}
