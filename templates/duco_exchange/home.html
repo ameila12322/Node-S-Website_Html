@@ -140,7 +140,7 @@
         <div class="card text-center pt-2">
           <div class="card-body">
             <p class="mb-1">Exchange Rate</p>
-            <h4 id="exchangeRate"></h4>
+            <h4>1ᕲ = {{ DucoPoolPrice }}</h4>
           </div>
         </div>
       </div>
@@ -286,6 +286,12 @@
                   <div class="btn-group">
                     <input class="btn btn-sm btn-outline-success" type="submit" name="submit" value="Donate To Pool">
                     <input class="btn btn-sm btn-outline-success" type="submit" name="submit" value="Donate To Creator">
+                    <form action="https://www.paypal.com/donate" method="post" target="_top">
+                    <input type="hidden" name="hosted_button_id" value="66VLV79Q3W82C" />
+                    <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_SM.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+                    <img alt="" border="0" src="https://www.paypal.com/en_ZA/i/scr/pixel.gif" width="1" height="1" />
+                    </form>
+
                   </div>
                 </div>
               </form>
