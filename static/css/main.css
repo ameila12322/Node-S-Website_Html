@@ -353,9 +353,21 @@ code {
 
 select {
   background: #1d2733 !important;
+  border: none !important;
+  outline: none !important;
+  color: #ffffff !important;
 }
 
-.cke_contents {
-  background: #1d2733 !important;
-  color: #ffffff !important;
+#main form {
+  background-color: #1d2733;
+}
+
+#topic-list li {
+  background-color: #1d2733;
+  border-color: #242e3e;
+}
+
+#replies li {
+  background-color: #1d2733;
+  border-top: #242e3e 2px solid;
 }
