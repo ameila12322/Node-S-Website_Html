@@ -106,9 +106,6 @@ const loadDiscord = () => {
         var users = data.members;
         var serverName = data.name;
 
-        let liWrap = document.createElement('ul');
-        liWrap.classList.add('channels--list--wrap');
-
         svName.innerHTML = serverName;
 
         svUsersN.innerHTML = data.members.length+" Members Online";
@@ -184,7 +181,7 @@ const loadData = () => {
     getJSON(
         "https://cors-anywhere.herokuapp.com/http://www.node-s.co.za/api/v1/duco/exchange_rate"
       ).then((data) => {
-        exchR.innerHTML = `1ᕲ = $${data["value"]}`;
+        exchR.innerHTML = `1ᕲ = $${data["value"] || 0}`;
       });
     setTimeout(() => {
         loadData();
