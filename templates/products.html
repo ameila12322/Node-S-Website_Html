@@ -1,12 +1,10 @@
 {% extends "store_base.html" %}
 
 {% block content %}
+<div id="alerts" style="position: absolute; right:15px; top:59px; text-align: center;">
+</div>
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/main.css') }}">
   <div class="album py-5 bg-light">
-    <div class="row">
-      <div class="container">
-      </div>
-    </div>
     <div class="container">
       <div class="row">
       {% for product in Products %}
@@ -43,6 +41,10 @@
                             var data = new URLSearchParams();
                             data.append("Item_ID", document.getElementById("product-{{ product.Id }}").value);
                             fetch("{{ url_for('store.add_to_cart') }}", { method: 'post', body: data });
+                            document.getElementById("alerts").innerHTML += `<div class="alert alert-success alert-dismissible">
+                              <button type="button" class="close" data-dismiss="alert">&times;</button>
+                              Succesfully added product to cart (id {{ product.id }})
+                            </div>`;
                             return false;
                           };
                         </script>
