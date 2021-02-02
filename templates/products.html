@@ -42,7 +42,7 @@
                             data.append("Item_ID", "{{ product.Id }}");
                             fetch("{{ url_for('store.add_to_cart') }}", { method: 'post', body: data });
 
-                            document.getElementById("alerts").innerHTML += `<div class="alert alert-success alert-dismissible">
+                            document.getElementById("alerts").innerHTML += `<div class="alert alert-success alert-dismissible" style="position: absolute; right:15px; top:59px; text-align: center; z-index: 2;">
                               <button type="button" class="close" data-dismiss="alert">&times;</button>
                               Succesfully added {{ product.Name }} ({{ product.Id }}) to the cart
                             </div>`;
