@@ -359,15 +359,15 @@ select {
 }
 
 #main form {
-  background-color: #1d2733;
+  background-color: #1d2733 !important;
 }
 
 #topic-list li {
-  background-color: #1d2733;
-  border-color: #242e3e;
+  background-color: #1d2733 !important;
+  border-color: #242e3e !important;
 }
 
 #replies li {
-  background-color: #1d2733;
-  border-top: #242e3e 2px solid;
+  background-color: #1d2733 !important;
+  border-top: #242e3e 2px solid !important;
 }
