@@ -60,7 +60,7 @@
           </div>
           <div class="card-body">
             <span>Available DUCO</span>
-            <h3>{{ user_duco_balance }} ᕲ</h3>
+            <h3>{{ "%.6f"|format(user_duco_balance) }} ᕲ</h3>
 
             <hr />
             <div class="d-flex justify-content-between my-3">
@@ -116,7 +116,7 @@
         <div class="card text-center pt-2">
           <div class="card-body">
             <p class="mb-1">Site Balance</p>
-            <h4>{{ current_user.duco_account[0].balance }} ᕲ</h4>
+            <h4>{{ "%.6f"|format(current_user.duco_account[0].balance) }} ᕲ</h4>
           </div>
         </div>
       </div>
