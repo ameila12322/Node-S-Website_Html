@@ -34,10 +34,18 @@
                     {% else %}
                       {% if product.out_of_stock == True or product.stock == 0 %}
                       {% else %}
-                        <form action="{{ url_for('store.add_to_cart') }}" onsubmit="return false" method="post" >
-                            <input type="hidden" value="{{ product.Id }}" name="Item_ID">
-                            <input class="btn btn-sm btn-outline-secondary" type="submit" value="Add To Cart">
+                        <form action="{{ url_for('store.add_to_cart') }}" method="post" >
+                            <input type="hidden" value="{{ product.Id }}" id="product-{{ product.Id }}" name="Item_ID">
+                            <input class="btn btn-sm btn-outline-secondary" id="btn-{{ product.Id }}" type="button" value="Add To Cart">
                         </form>
+                        <script>
+                          $("#btn-{{ product.Id }}").click(function() {
+                            var data = new URLSearchParams();
+                            data.append("Item_ID", $("#product-{{ product.Id }}").val());
+                            fetch("{{ url_for('store.add_to_cart') }}", { method: 'post', body: data });
+                            return false;
+                          });
+                        </script>
                       {% endif %}
                     {% endif %}
                 </div>

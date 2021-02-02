@@ -380,3 +380,7 @@ select {
 .list-group-item {
   padding: .25rem .5rem;
 }
+
+li * .row {
+  margin-top: 0px;
+}
