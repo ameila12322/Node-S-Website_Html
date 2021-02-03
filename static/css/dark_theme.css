@@ -384,3 +384,11 @@ select {
 li * .row {
   margin-top: 0px;
 }
+
+h2 {
+  color: #ffffff !important;
+}
+
+h3 {
+  font-size: 1.25rem;
+}
