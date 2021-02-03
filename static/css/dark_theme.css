@@ -392,3 +392,21 @@ h2 {
 h3 {
   font-size: 1.25rem;
 }
+
+/* Modal fix */
+
+.modal, .modal-dialog, .modal-content { 
+  background: #131722 !important; 
+}
+
+.modal-header { 
+  background: #131722 !important; 
+}
+
+.modal-body { 
+  background: #181c29 !important; 
+}
+
+.modal-footer { 
+  background: #131722 !important; 
+}
