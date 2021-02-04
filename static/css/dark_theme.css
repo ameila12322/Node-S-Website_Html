@@ -464,3 +464,10 @@ h3 {
   background: #080e15 !important; 
 }
 
+.select2-selection, .select2-selection--multiple, .select2-selection__rendered {
+  background: #080e15 !important; 
+}
+
+.select2-selection__choice__display {
+  background: #171f29 !important;
+}
