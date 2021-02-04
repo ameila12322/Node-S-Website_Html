@@ -410,3 +410,22 @@ h3 {
 .modal-footer { 
   background: #131722 !important; 
 }
+
+.select2-offscreen {
+  background: #131722 !important; 
+}
+.select2-input {
+  background: #080e15 !important;
+}
+.btn-default {
+  background: #080e15 !important;
+}
+.select2-container {
+  background: #131722 !important; 
+}
+.select2-choice {
+  background: #171f29 !important;
+}
+.select2-chosen  {
+  background: #1d2733 !important;
+}
