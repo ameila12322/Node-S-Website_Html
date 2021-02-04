@@ -445,3 +445,22 @@ h3 {
 .select2-container--default .select2-selection--single {
   background: #080e15 !important; 
 }
+
+/* Other */
+
+.select2-container, .select2-container-multi {
+  background: #080e15 !important; 
+}
+
+.select2-choices {
+  background: #1d2733 !important;
+}
+
+.select2-search-choice {
+  background: #171f29 !important;
+}
+
+.select2-results {
+  background: #080e15 !important; 
+}
+
