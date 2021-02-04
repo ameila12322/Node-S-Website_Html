@@ -411,21 +411,24 @@ h3 {
   background: #131722 !important; 
 }
 
-.select2-offscreen {
+/* Admin Panel Select */
+
+.select2-search {
   background: #131722 !important; 
 }
-.select2-input {
-  background: #080e15 !important;
+
+.select2-search input { 
+  background-color: #080e15 !important;
 }
-.btn-default {
-  background: #080e15 !important;
-}
-.select2-container {
-  background: #131722 !important; 
-}
-.select2-choice {
+
+.select2-results { 
   background: #171f29 !important;
 }
-.select2-chosen  {
+
+.select2-choice { 
   background: #1d2733 !important;
+}
+
+.select2-container--default .select2-selection--single {
+  background: #131722 !important; 
 }
