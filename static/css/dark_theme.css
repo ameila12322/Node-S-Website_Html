@@ -421,8 +421,21 @@ h3 {
   background-color: #080e15 !important;
 }
 
-.select2-results { 
+.select2-results, .select2-results__options, .select2-result-label { 
   background: #171f29 !important;
+}
+
+.select2-results__option,
+.select2-results__option--selectable { 
+  background: #171f29 !important;
+}
+
+.select2-results__option--selected {
+  background: #181c29 !important;
+}
+
+.select2-results__option--highlighted {
+  background: #1f2638 !important;
 }
 
 .select2-choice { 
@@ -430,5 +443,5 @@ h3 {
 }
 
 .select2-container--default .select2-selection--single {
-  background: #131722 !important; 
+  background: #080e15 !important; 
 }
